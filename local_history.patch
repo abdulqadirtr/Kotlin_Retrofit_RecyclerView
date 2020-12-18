@@ -1,0 +1,83 @@
+Index: app/src/main/java/com/example/kotlin_recyclerview/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/kotlin_recyclerview/MainActivity.kt	(date 1608278753000)
++++ app/src/main/java/com/example/kotlin_recyclerview/MainActivity.kt	(date 1608278753000)
+@@ -1,74 +1,0 @@
+-package com.example.kotlin_recyclerview
+-
+-import MarvelResponse
+-import android.os.Bundle
+-import androidx.appcompat.app.AppCompatActivity
+-import androidx.recyclerview.widget.RecyclerView
+-import com.example.kotlin_recyclerview.retrofit.ApiClient
+-import com.example.kotlin_recyclerview.retrofit.ApiInterface
+-import retrofit2.Call
+-import retrofit2.Callback
+-import retrofit2.Response
+-import retrofit2.Retrofit
+-
+-
+-class MainActivity : AppCompatActivity() {
+-
+-    // why we use question mark
+-    var recyclerview: RecyclerView? = null
+-
+-    var adapter : MyAdapter? = null
+-
+-            override fun onCreate(savedInstanceState: Bundle?) {
+-        super.onCreate(savedInstanceState)
+-        setContentView(R.layout.activity_main)
+-
+-                val retrofit: Retrofit? =null
+-
+-                val clientApi: ApiInterface? = retrofit!!.create(ApiInterface::class.java)
+-                val mValue: Call<MarvelResponse> = clientApi!!.getMovies()
+-                mValue.enqueue(object : Callback<MarvelResponse>{
+-                    override fun onFailure(call: Call<MarvelResponse>?, t: Throwable?) {
+-                        TODO("Not yet implemented")
+-                    }
+-
+-                    override fun onResponse(call: Call<MarvelResponse>?, response: Response<MarvelResponse>?) {
+-                        TODO("Not yet implemented")
+-                    }
+-
+-
+-                })
+-
+-
+-
+-               call.enqueue(object: Callback<MarvelResponse> {
+-
+-                   override fun onResponse(
+-                       call: Call<MarvelResponse>?,
+-                       response: Response<MarvelResponse>?
+-                   ) {
+-                    if(response!!.isSuccessful){
+-                     /*   adapter = MyAdapter()
+-                        recyclerview = findViewById(R.id.recycler1)
+-                        recyclerview!!.layoutManager = LinearLayoutManager(this)
+-                        recyclerview!!.hasFixedSize()*/
+-                    }
+-                   }
+-                   override fun onFailure(call: Call<MarvelResponse>?, t: Throwable?) {
+-                   }
+-
+-               })
+-
+-           /*   val input: MutableList<String> = ArrayList()
+-                for (i in 1..100) {
+-                    input.add("Test" + i)
+-                }
+-                adapter = MyAdapter(input as ArrayList<String>)
+-                recyclerview = findViewById(R.id.recycler1)
+-                recyclerview!!.layoutManager = LinearLayoutManager(this)
+-                recyclerview!!.hasFixedSize()
+-             Toast.makeText(this,"Hello" + input.get(1),Toast.LENGTH_LONG).show()*/
+-
+-
+-    }
+-}
+\ No newline at end of file
