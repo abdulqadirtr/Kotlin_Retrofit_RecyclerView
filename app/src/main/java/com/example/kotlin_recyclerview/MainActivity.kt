@@ -1,6 +1,7 @@
 package com.example.kotlin_recyclerview
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,6 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     var myAPI: IMyAPI? = null
-    var recyler_posts: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +46,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun displayData(posts: List<Post?>?) {
 
-        recyler_posts!!.layoutManager = LinearLayoutManager(this)
-        val adapter =  PostAdapteer( posts!!)
-       recyler_posts!!.adapter = adapter
+        val rvRecylerview = findViewById<View>(R.id.recycler_posts) as RecyclerView
+        val adapter = PostAdapteer(posts)
+        rvRecylerview.adapter = adapter
+        // Set layout manager to position the items
+        rvRecylerview.layoutManager = LinearLayoutManager(this)
+      rvRecylerview.setHasFixedSize(true)
 
     }
 
