@@ -11,4 +11,4 @@ adapter.onItemClick = { contact, status ->
     
     ## Screenshot
     
-    [Recyclerview] (app/src/main/res/drawable-v24/screenshot.png)
+    [app/src/main/res/drawable-v24/screenshot.png]
