@@ -10,5 +10,5 @@ adapter.onItemClick = { contact, status ->
     
     
     ## Screenshot
-    ![Alt text](app/src/main/res/drawable-v24/screenshot.png?raw=true "Optional Title")
+    ![Alt text](/app/src/main/res/drawable-v24/screenshot.png?raw=true "Optional Title")
 
