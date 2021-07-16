@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -61,6 +62,11 @@ class ShowValues : Fragment() {
         // Set layout manager to position the items
         recyclerView!!.layoutManager = LinearLayoutManager(activity)
         recyclerView!!.setHasFixedSize(true)
+
+
+        adapter.itemClickListener = { post , status ->
+            Toast.makeText(requireContext(), "Clicked Button  " + post?.title + "  " + status,  Toast.LENGTH_SHORT).show()
+        }
 
     }
 
