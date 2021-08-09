@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_recyclerview.Adapter.PostAdapteer
+import com.example.kotlin_recyclerview.Model.Email
 import com.example.kotlin_recyclerview.Model.Post
 import com.example.kotlin_recyclerview.R
 import com.example.kotlin_recyclerview.Retrofit.IMyAPI
@@ -57,7 +58,17 @@ class ShowValues : Fragment() {
         })
     }
     private fun displayData(posts: List<Post?>?) {
-        val adapter = PostAdapteer(posts)
+       // val adapter = PostAdapteer(posts)
+
+        val dataList = ArrayList<Email>()
+        dataList.add(Email(PostAdapteer.VIEW_TYPE_ONE, "1. Hi! I am in View 1"))
+        dataList.add(Email(PostAdapteer.VIEW_TYPE_TWO, "2. Hi! I am in View 2"))
+        dataList.add(Email(PostAdapteer.VIEW_TYPE_ONE, "3. Hi! I am in View 3"))
+        dataList.add(Email(PostAdapteer.VIEW_TYPE_TWO, "4. Hi! I am in View 4"))
+        dataList.add(Email(PostAdapteer.VIEW_TYPE_ONE, "5. Hi! I am in View 5"))
+
+        val adapter = PostAdapteer(dataList)
+
         recyclerView!!.adapter = adapter
         // Set layout manager to position the items
         recyclerView!!.layoutManager = LinearLayoutManager(activity)
@@ -65,7 +76,7 @@ class ShowValues : Fragment() {
 
 
         adapter.itemClickListener = { post , status ->
-            Toast.makeText(requireContext(), "Clicked Button  " + post?.title + "  " + status,  Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Clicked Button  " + post?.emailAddress + "  " + status,  Toast.LENGTH_SHORT).show()
         }
 
     }
