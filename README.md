@@ -10,6 +10,10 @@ also item clickListner is used to send the clicklistner of adapter to the fragme
 * ViewModel
 * ViewModelFactory
 
+
+## Screenshot
+![Alt text](app/src/main/res/drawable-v24/screenshot.png)
+
 ```kotlin
 adapter.onItemClick = { contact, status ->
         // do something with your item
@@ -19,6 +23,6 @@ adapter.onItemClick = { contact, status ->
     
     ## Screenshot
     ![picture alt](http://via.placeholder.com/200x150 "Title is optional")
-    ![Alt text](app/src/main/res/drawable-v24/screenshot.png)
+    
  
 
