@@ -19,10 +19,7 @@ adapter.onItemClick = { contact, status ->
         // do something with your item
         Log.d("TAG", contact.email)
     }
-    
-    
-    ## Screenshot
-    ![picture alt](http://via.placeholder.com/200x150 "Title is optional")
+  
     
  
 
