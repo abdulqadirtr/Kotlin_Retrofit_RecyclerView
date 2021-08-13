@@ -3,8 +3,12 @@
 In this android app API's data is received using Retrofit with complete MVVM architect and showed in recycleview
 also item clickListner is used to send the clicklistner of adapter to the fragment.
 
-Markup : * Technologies
-* 
+## Technologies
+* MVVM
+* LiveData, Lifecycle Observer
+* Retrofit
+* ViewModel
+* ViewModelFactory
 
 ```kotlin
 adapter.onItemClick = { contact, status ->
