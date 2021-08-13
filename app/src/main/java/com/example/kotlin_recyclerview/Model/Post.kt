@@ -1,9 +1,8 @@
 package com.example.kotlin_recyclerview.Model
 
-class Post {
-    var userId = 0
-    var id = 0
-    var title: String? = null
+data class Post(
+    var userId : Int,
+    var id : Int,
+    var title: String?,
     var body: String? = null
-
-}
+)

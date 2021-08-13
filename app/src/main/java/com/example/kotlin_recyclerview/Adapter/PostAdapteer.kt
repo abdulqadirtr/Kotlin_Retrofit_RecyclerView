@@ -10,11 +10,9 @@ import com.example.kotlin_recyclerview.Model.Post
 import com.example.kotlin_recyclerview.R
 import retrofit2.Response
 
-class PostAdapteer(
-    var postList: List<Post?>?
-) : RecyclerView.Adapter<PostAdapteer.PostViewHolder>() {
+class PostAdapteer: RecyclerView.Adapter<PostAdapteer.PostViewHolder>() {
 
-    private val items : MutableList<Post?> = mutableListOf()
+    private val postValue : MutableList<Post> = mutableListOf()
     var itemClickListener : (Post?, Boolean) -> Unit = {Post , status -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -24,29 +22,35 @@ class PostAdapteer(
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.txt_title.text = postList?.get(position)?.title.toString()
+        holder.bind(postValue[position])
+       /* holder.txt_title.text = postList?.get(position)?.title.toString()
         holder.txt_content.text = StringBuilder(postList!!.get(position)?.body!!.substring(0, 2))
-            .append("...").toString()
+            .append("...").toString()*/
+
     }
 
     override fun getItemCount(): Int {
-        return postList!!.size
+        return postValue!!.size
+    }
+
+    fun setCards(cards: List<Post>) {
+        postValue.clear()
+        postValue.addAll(cards)
+        notifyDataSetChanged()
     }
 
    inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var txt_title: TextView
-        var txt_content: TextView
-        var txt_author: TextView
+       var txt_title = itemView.findViewById<View>(R.id.txt_title) as TextView
+       var txt_content = itemView.findViewById<View>(R.id.txt_content) as TextView
+       var  txt_author = itemView.findViewById<View>(R.id.txt_author) as TextView
 
-        init {
-
-            txt_title = itemView.findViewById<View>(R.id.txt_title) as TextView
-            txt_content = itemView.findViewById<View>(R.id.txt_content) as TextView
-            txt_author = itemView.findViewById<View>(R.id.txt_author) as TextView
-
-            itemView.setOnClickListener {
-                itemClickListener.invoke(postList!![adapterPosition] , true)
-            }
-        }
+       fun bind(item: Post) {
+           txt_title.text = item.title
+           txt_content.text = StringBuilder(item.body!!.substring(0, 2))
+                   .append("...").toString()
+           itemView.setOnClickListener {
+               itemClickListener.invoke(postValue!![adapterPosition] , true)
+           }
+       }
     }
 }

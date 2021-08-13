@@ -5,6 +5,9 @@ buildscript {
         google()
         jcenter()
     }
+    ext{
+        retrofitVersion = "2.7.0"
+    }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"

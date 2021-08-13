@@ -6,6 +6,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface IMyAPI {
-    @get:GET("posts")
-    val posts: Call<List<Post?>?>
+    @GET("posts")
+    fun getAllPost() : Call<List<Post?>?>
 }

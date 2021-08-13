@@ -1,10 +1,11 @@
-package com.example.kotlin_recyclerview
+package com.example.kotlin_recyclerview.ui
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.kotlin_recyclerview.fragments.ShowValues
+import com.example.kotlin_recyclerview.R
+import com.example.kotlin_recyclerview.ui.fragments.ShowValues
 
 class MainActivity : AppCompatActivity() {
 
