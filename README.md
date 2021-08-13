@@ -9,6 +9,7 @@ also item clickListner is used to send the clicklistner of adapter to the fragme
 * Retrofit
 * ViewModel
 * ViewModelFactory
+* Fragment
 
 ## Dependencies
 
