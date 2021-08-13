@@ -13,8 +13,9 @@ also item clickListner is used to send the clicklistner of adapter to the fragme
 ## Dependencies
 
 **def retrofit_version = "2.9.0"**
-    ### implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    ### implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    ## implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    ## implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     
     
 
