@@ -18,6 +18,7 @@ adapter.onItemClick = { contact, status ->
     
     
     ## Screenshot
+    ![picture alt](http://via.placeholder.com/200x150 "Title is optional")
     ![Alt text](app/src/main/res/drawable-v24/screenshot.png)
  
 
