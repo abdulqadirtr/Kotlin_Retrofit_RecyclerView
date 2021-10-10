@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,42 +16,43 @@ import com.example.kotlin_recyclerview.viewmodel.MainFragmentViewModelFactory
 import com.example.kotlin_recyclerview.repository.MainRepository
 import com.example.kotlin_recyclerview.R
 import com.example.kotlin_recyclerview.Retrofit.RetrofitService
+import com.example.kotlin_recyclerview.databinding.FragmentShowValuesBinding
 import com.example.kotlin_recyclerview.viewmodel.MainFragmentViewModel
 
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class ShowValues : Fragment() {
-    var recyclerView: RecyclerView? = null
 
     private val retrofitService = RetrofitService.getInstance()
 
-    val adapter = PostAdapteer()
+    private lateinit var binding: FragmentShowValuesBinding
 
-    lateinit var viewModel: MainFragmentViewModel
+    val postAdapter = PostAdapteer()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var viewModel: MainFragmentViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.fragment_show_values, container, false)
-        recyclerView = view.findViewById(R.id.recycler_posts) as RecyclerView
-        recyclerView!!.setHasFixedSize(true)
-        recyclerView?.adapter = adapter
-        recyclerView?.layoutManager = LinearLayoutManager(activity)
+        // Inflate view and obtain an instance of the binding class
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_show_values,
+            container,
+            false
+        )
+        binding.recyclerPosts.apply {
+            setHasFixedSize(true)
+            adapter = postAdapter
+            layoutManager = LinearLayoutManager(activity)
+        }
 
         viewModel = ViewModelProvider(this, MainFragmentViewModelFactory(MainRepository(retrofitService))).get(MainFragmentViewModel::class.java)
         viewModel.getPosts()
+
         initObserver(viewModel)
 
-        adapter?.itemClickListener = { post, status ->
+        postAdapter?.itemClickListener = { post, status ->
             Toast.makeText(
                     requireContext(),
                     "Clicked Button  " + post?.title + "  " + status,
@@ -58,7 +60,7 @@ class ShowValues : Fragment() {
             ).show()
         }
 
-        return view
+        return binding.root
     }
 
   private fun initObserver(viewModel: MainFragmentViewModel) {
@@ -67,7 +69,7 @@ class ShowValues : Fragment() {
 
             postLiveData.observe(viewLifecycleOwner, Observer { it ->
 
-                adapter.setCards(it)
+                postAdapter.setCards(it)
 
             })
 
