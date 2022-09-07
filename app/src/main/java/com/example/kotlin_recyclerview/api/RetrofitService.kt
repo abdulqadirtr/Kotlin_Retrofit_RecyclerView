@@ -1,6 +1,6 @@
-package com.example.kotlin_recyclerview.Retrofit
+package com.example.kotlin_recyclerview.api
 
-import com.example.kotlin_recyclerview.Model.Post
+import com.example.kotlin_recyclerview.Model.PostResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface RetrofitService {
     @GET("posts")
-    fun getAllMovies() : Call<List<Post>>
+    fun getAllPosts() : Call<List<PostResponse>>
 
     companion object {
 

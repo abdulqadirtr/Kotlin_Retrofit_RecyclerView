@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin_recyclerview.repository.MainRepository
 
-class MainFragmentViewModelFactory constructor(private val repository: MainRepository): ViewModelProvider.Factory {
+class MainFragmentViewModelFactory constructor(private val repository: MainRepository) :
+    ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(MainFragmentViewModel::class.java)) {

@@ -5,7 +5,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.kotlin_recyclerview.R
-import com.example.kotlin_recyclerview.ui.fragments.ShowValues
+import com.example.kotlin_recyclerview.ui.fragments.PostsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN );
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(ShowValues())
+        replaceFragment(PostsFragment())
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -24,9 +24,5 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.container, fragment, "fragment1")
         transaction.addToBackStack("fragment1")
         transaction.commit()
-    }
-
-    override fun onStop() {
-        super.onStop()
     }
 }

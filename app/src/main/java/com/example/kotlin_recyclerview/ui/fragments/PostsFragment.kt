@@ -5,35 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlin_recyclerview.Adapter.PostAdapteer
+import com.example.kotlin_recyclerview.Adapter.PostAdapter
 import com.example.kotlin_recyclerview.viewmodel.MainFragmentViewModelFactory
 import com.example.kotlin_recyclerview.repository.MainRepository
 import com.example.kotlin_recyclerview.R
-import com.example.kotlin_recyclerview.Retrofit.RetrofitService
+import com.example.kotlin_recyclerview.api.RetrofitService
 import com.example.kotlin_recyclerview.viewmodel.MainFragmentViewModel
 
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-class ShowValues : Fragment() {
+class PostsFragment : Fragment() {
     var recyclerView: RecyclerView? = null
 
     private val retrofitService = RetrofitService.getInstance()
 
-    val adapter = PostAdapteer()
-
-    lateinit var viewModel: MainFragmentViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    val adapter = PostAdapter()
+        lateinit var viewModel: MainFragmentViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +49,12 @@ class ShowValues : Fragment() {
             ).show()
         }
 
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        })
+
         return view
     }
 
@@ -65,9 +62,9 @@ class ShowValues : Fragment() {
 
         with(viewModel) {
 
-            postLiveData.observe(viewLifecycleOwner, Observer { it ->
+            postResponseLiveData.observe(viewLifecycleOwner, Observer { posts ->
 
-                adapter.setCards(it)
+              adapter.submitList(posts)
 
             })
 

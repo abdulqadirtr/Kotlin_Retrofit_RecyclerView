@@ -1,6 +1,6 @@
 package com.example.kotlin_recyclerview.Model
 
-data class Post(
+data class PostResponse(
     var userId : Int,
     var id : Int,
     var title: String?,
