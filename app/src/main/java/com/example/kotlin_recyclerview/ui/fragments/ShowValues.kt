@@ -41,11 +41,10 @@ class ShowValues : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_show_values, container, false)
-        recyclerView = view.findViewById(R.id.recycler_posts) as RecyclerView
-        recyclerView!!.setHasFixedSize(true)
+        recyclerView = view.findViewById(R.id.recycler_posts)
+        recyclerView?.setHasFixedSize(true)
         recyclerView?.adapter = adapter
         recyclerView?.layoutManager = LinearLayoutManager(activity)
-
         viewModel = ViewModelProvider(this, MainFragmentViewModelFactory(MainRepository(retrofitService))).get(MainFragmentViewModel::class.java)
         viewModel.getPosts()
         initObserver(viewModel)

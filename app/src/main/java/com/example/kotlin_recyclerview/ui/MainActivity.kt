@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
-        val transaction = fragmentManager!!.beginTransaction()
+        val transaction = fragmentManager?.beginTransaction()
         transaction.replace(R.id.container, fragment, "fragment1")
         transaction.addToBackStack("fragment1")
         transaction.commit()
@@ -28,5 +28,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+    }
+
+    override fun onBackPressed() {
+        finish()
     }
 }
